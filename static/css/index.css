@@ -1,7 +1,7 @@
-:root { color-scheme:light; --ink:#303030; --muted:#6b6b6b; --line:#e3e3e3; --soft:#f7f7f7; --accent:#8c1515; --policy:#1594d0; --link:#8c1515; --green:#008247; --baseline:#777; }
+:root { color-scheme:light; --ink:#303030; --muted:#6b6b6b; --line:#e3e3e3; --soft:#f7f7f7; --accent:#a51c30; --policy:#1594d0; --link:#a51c30; --green:#008247; --baseline:#777; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; scroll-padding-top:24px; }
-body { margin:0; background:#fff; color:var(--ink); font:17px/1.65 Arial,Helvetica,sans-serif; }
+body { margin:0; background:#fff; color:var(--ink); font:17px/1.65 "Source Sans 3","Helvetica Neue",Helvetica,Arial,sans-serif; }
 a { color:var(--link); text-underline-offset:3px; }
 p { margin:0 0 18px; }
 h1,h2,h3 { line-height:1.25; }
