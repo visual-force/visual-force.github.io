@@ -1,0 +1,10 @@
+/* Reuses the academic site's controls and readouts. */
+.deformation-viewer { --measured:#555; --predicted:var(--green); }
+.measured-dot { background:var(--measured); }
+.predicted-dot { background:var(--predicted); }
+.predicted-readout { border-top-color:var(--predicted); }
+.predicted-readout strong { color:var(--predicted); }
+.deformation-viewer .data-note { margin-top:24px; }
+#deformation-time-value { color:var(--ink); }
+#deformation-time { accent-color:var(--accent); }
+#deformation-plot .predicted-trace { stroke-dasharray:7 4; }

@@ -41,7 +41,7 @@
         <li><span>02 · Policy training</span><h3>Give demonstrations force labels</h3><p>Use the frozen estimator to annotate task demonstrations. Train a policy to jointly generate actions and their associated forces.</p></li>
         <li><span>03 · Deployment</span><h3>Sample, select, execute</h3><p>Sample 32 action–force pairs. Execute the action whose predicted force is closest to a target from task demonstrations.</p></li>
       </ol>
-      <figure class="method-figure"><img src="static/images/paper/method.png" alt="Paper Figure 2: wrist images are converted to gripper edges for visual force estimation; a separate policy proposes action–force pairs for target-based selection." width="1060" height="300" loading="lazy"><figcaption>Visual force estimation and inference-time force search. <a href="static/papers/paper.pdf#page=3">Figure 2 in the paper ↗</a></figcaption></figure>
+      <figure class="method-figure"><a href="static/images/paper/method.pdf" target="_blank" rel="noopener" aria-label="Open the full-size method figure"><img src="static/images/paper/method.svg" alt="Paper Figure 2: wrist images are converted to gripper edges for visual force estimation; a separate policy proposes action–force pairs for target-based selection." width="1466" height="388" loading="lazy"></a><figcaption>Visual force estimation and inference-time force search. <a href="static/papers/paper.pdf#page=3">Figure 2 in the paper ↗</a></figcaption></figure>
       <p class="method-note">At deployment, the policy uses wrist RGB, side-view RGB, and robot state. Its generated force values guide selection; only the chosen action is sent to the robot.</p>
       </div>
     </section>

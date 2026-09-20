@@ -16,14 +16,13 @@ Open <http://localhost:8000>. The site is static HTML/CSS/JavaScript; no build s
 - `static/js/index.js`: task data and paired playback controls. Update task descriptions and success rates here and in the initial HTML/results table together.
 - `static/css/index.css`: shared academic styles for both pages. `force-demo.css` contains standalone page layout only.
 - `static/js/force-demo.js`: the selection-rule explainer, shared with the standalone `force-demo.html` prototype. Candidate values are explicitly synthetic; measured results do not depend on the slider.
-- `docs/website-design.md`: design rationale, paper evidence, and data requirements for a recorded-example viewer.
 
 The experiment picker loads only the selected pair of videos. Videos start on user request. Changing tasks pauses the previous pair. Individual playback speeds are omitted from captions; a note explains that playback durations do not represent task completion times.
 
 ## Assets
 
 - `static/papers/paper.pdf`: supplied manuscript, the source for paper content and results.
-- `static/images/paper/method.png`: Figure 2 extracted from PDF page 3.
+- `static/images/paper/method.svg`: Figure 2 exported from the original `visual_force_paper/figures/method.pdf`, preserving vector text and diagrams. The adjacent PDF is the full-size source linked from the image.
 - `static/images/tasks/`: video poster frames.
 - `static/videos/web/`: H.264/AAC, 1280×720 browser copies with fast-start metadata.
 - `static/videos/berry/`, `can/`, `plug/`, `teaser/`: preserved source recordings.
