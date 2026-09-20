@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VisualForce learns force from visible gripper deformation and uses predicted force to select robot actions, without dedicated force or tactile sensors at deployment.">
+  <meta name="theme-color" content="#fcfdf9">
+  <meta property="og:title" content="VisualForce · Robot Learning with Visual Predicted Force">
+  <meta property="og:description" content="Force-aware action selection from visible gripper deformation. Explore the method and four real-world manipulation tasks.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <title>VisualForce · Robot Learning with Visual Predicted Force</title>
+  <link rel="stylesheet" href="static/css/index.css">
+  <script defer src="static/js/index.js"></script>
+  <script defer src="static/js/force-demo.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <header class="hero container" id="overview">
+      <h1><span>VisualForce:</span> Robot Learning<br>with Visual Predicted Force</h1>
+      <p class="authors"><span>Haonan Chen<sup>1,*</sup></span> <span>Feiyang Wu<sup>1,*</sup></span> <span>Yuxiang Ma<sup>2</sup></span> <span>Mustafa Mete<sup>1</sup></span> <span>Pengfei Ye<sup>2</sup></span> <span>Junxuan Shen<sup>2</sup></span> <span>Cheng Zhu<sup>3</sup></span> <span>Aurora Ruggeri<sup>1</sup></span> <span>Kelvin Cheung<sup>1</sup></span> <span>Jiayuan Mao<sup>3</sup></span> <span>Edward Adelson<sup>2</sup></span> <span>Jiajun Wu<sup>4</sup></span> <span>Robert D. Howe<sup>1</sup></span> <span>Yilun Du<sup>1</sup></span></p>
+      <p class="affiliations"><span><sup>1</sup>Harvard University</span><span><sup>2</sup>MIT</span><span><sup>3</sup>University of Pennsylvania</span><span><sup>4</sup>Stanford University</span></p>
+      <p class="equal-contribution">* Equal contribution</p>
+      <div class="hero-links"><a class="button" href="static/papers/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">Explore force search <span aria-hidden="true">↓</span></a></div>
+      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#demo">Interactive Demo</a><a href="#video">Experiments</a><a href="#results">Results</a></nav>
+    </header>
+    <section class="container hero-demo" aria-labelledby="teaser-title">
+      <p class="teaser-summary" id="teaser-title"><strong>TL;DR:</strong> Learn force from visible gripper deformation, then use predicted force to select robot actions—without dedicated force or tactile sensors at deployment.</p>
+      <figure class="teaser-video"><video controls muted playsinline loop preload="none" poster="static/images/tasks/teaser.jpg" aria-label="VisualForce charging demonstration"><source src="static/videos/web/teaser.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/web/teaser.mp4">Download the charging demonstration</a>.</video><figcaption>Maintaining a secure grasp during plug insertion.<span>Video sped up for presentation.</span></figcaption></figure>
+    </section>
+    <section class="container section abstract-section" id="abstract" aria-labelledby="abstract-title"><h2 id="abstract-title">Abstract</h2><p>Force-aware manipulation typically relies on specialized force or tactile sensors. We show that force-aware manipulation can instead be achieved through visual force prediction from the deformation of a compliant Fin Ray gripper. Our approach trains two models. First, we train a visual force estimator on calibration data and use it to annotate task demonstrations with force estimates. Second, we train an action–force proposal policy on these force-augmented demonstrations to jointly generate candidate robot actions and their associated forces. At test time, we sample candidate actions and the forces they are expected to produce, then execute the action whose predicted force is closest to a target from the demonstrations. We evaluate our approach on berry picking, empty-can grasping, in-hand reorientation, and plug insertion. Our results show that visual force prediction can guide inference-time action selection for contact-rich manipulation without requiring force or tactile sensors at deployment.</p></section>
+    <section class="container section motivation" aria-labelledby="motivation-title">
+      <div class="section-intro"><h2 id="motivation-title">Why force matters</h2></div>
+      <div class="motivation-copy"><p>A berry can be crushed. An empty can can dent. A plug can slip before it is fully inserted. Successful manipulation depends on applying the right force for the task.</p><p>We use an existing compliant Fin Ray gripper design. A wrist camera captures its deformation under contact, providing a visual signal for learning force-aware behavior.</p></div>
+    </section>
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="container"><div class="section-intro"><h2 id="method-title">Method</h2><p>Two learned models connect what the gripper looks like to the action the robot takes.</p></div>
+      <ol class="pipeline">
+        <li><span>01 · Calibration</span><h3>Learn to read deformation</h3><p>Pair wrist-camera images with reference force measurements. Train a visual estimator on masked gripper edges.</p></li>
+        <li><span>02 · Policy training</span><h3>Give demonstrations force labels</h3><p>Use the frozen estimator to annotate task demonstrations. Train a policy to jointly generate actions and their associated forces.</p></li>
+        <li><span>03 · Deployment</span><h3>Sample, select, execute</h3><p>Sample 32 action–force pairs. Execute the action whose predicted force is closest to a target from task demonstrations.</p></li>
+      </ol>
+      <figure class="method-figure"><img src="static/images/paper/method.png" alt="Paper Figure 2: wrist images are converted to gripper edges for visual force estimation; a separate policy proposes action–force pairs for target-based selection." width="1060" height="300" loading="lazy"><figcaption>Visual force estimation and inference-time force search. <a href="static/papers/paper.pdf#page=3">Figure 2 in the paper ↗</a></figcaption></figure>
+      <p class="method-note">At deployment, the policy uses wrist RGB, side-view RGB, and robot state. Its generated force values guide selection; only the chosen action is sent to the robot.</p>
+      </div>
+    </section>
+    <div class="container section demo-section">
+    <section class="experiment" id="demo" aria-labelledby="demo-title">
+      <div class="section-heading"><div><h2 id="demo-title">Interactive Force Search</h2></div><span class="badge">Illustrative data</span></div>
+      <p>Move the target force. Each circle is one action–force candidate; the selected circle identifies the action to execute.</p>
+      <div class="target-control"><label for="target">Target force <output id="target-value" for="target">4.50 N</output></label><input id="target" type="range" min="0" max="10" step="0.05" value="4.5"><div class="range-labels"><span>0 N</span><span>10 N</span></div></div>
+      <div class="legend"><span><i class="dot"></i>Policy candidate</span><span><i class="dot selected"></i>Closest to target</span><span><i class="dot baseline"></i>Single-sample baseline</span></div>
+      <svg id="force-plot" viewBox="0 0 900 260" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Force predictions for 32 illustrative candidates</title><desc id="plot-description">A vertical target line and selected candidate update as you change the target force. Exact selected values are reported below.</desc></svg>
+      <div class="readouts" aria-live="polite" aria-atomic="true">
+        <div class="readout"><span>Single-sample baseline</span><strong id="baseline-action"></strong><p id="baseline-force"></p><small>Chosen without using its force value.</small></div>
+        <div class="readout chosen"><span>Force search · 32 candidates</span><strong id="selected-action"></strong><p id="selected-force"></p><small>Chosen by the smallest absolute target error.</small></div>
+      </div>
+      <div class="actions"><button id="draw" type="button">Draw another baseline sample</button><button id="reset" type="button" class="secondary">Reset</button></div>
+      <p class="note">These 32 values are synthetic examples, not model outputs or a reproduction of Figure 8. Moving the slider illustrates selection; it does not predict a new robot rollout or success rate.</p>
+      <details><summary>What happens on the real robot?</summary><p>The target is chosen from task demonstrations. The policy jointly generates actions and forces; the visual force estimator does not score candidates at deployment. Only the selected end-effector action is sent to the robot. Force is used for selection, rather than sent as a force command. See Section III-D and Algorithm 1.</p></details>
+      <noscript><p>Enable JavaScript to explore the demo. Force search chooses the candidate that minimizes |predicted force − target force|.</p></noscript>
+    </section>
+    </div>
+    <section class="section experiments-section" id="video" aria-labelledby="video-title">
+      <div class="container"><div class="section-intro"><h2 id="video-title">Real-World Experiments</h2><p>Choose a task to compare single-sample policy inference with force search using the same trained checkpoint.</p></div>
+      <div class="task-picker" role="group" aria-label="Choose a manipulation task"><button type="button" data-task="berry" aria-pressed="true" aria-controls="task-panel">Berry picking</button><button type="button" data-task="can" aria-pressed="false" aria-controls="task-panel">Can grasping</button><button type="button" data-task="reorientation" aria-pressed="false" aria-controls="task-panel">Reorientation</button><button type="button" data-task="plug" aria-pressed="false" aria-controls="task-panel">Plug insertion</button></div>
+      <div id="task-panel" role="region" aria-labelledby="task-title">
+        <div class="task-heading"><div><h3 id="task-title">Berry picking</h3><p id="task-description">Grasp and transfer a berry without crushing it.</p></div><p class="trial-note">15 trials per method<br>Success rates from the paper</p></div>
+        <div class="video-grid">
+          <figure class="video-card"><figcaption><span id="baseline-video-label">Policy · single sample</span><strong id="baseline-rate">0.0% success</strong></figcaption><video id="baseline-video" controls muted playsinline preload="metadata" poster="static/images/tasks/berry-baseline.jpg" aria-labelledby="baseline-video-label"><source src="static/videos/web/berry-baseline.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p id="baseline-behavior">Failure mode: excessive grip crushes the berry.</p><a id="baseline-download" href="static/videos/web/berry-baseline.mp4" download aria-label="Download baseline video">↓</a></div></figure>
+          <figure class="video-card ours-card"><figcaption><span id="ours-video-label">VisualForce · force search</span><strong id="ours-rate">73.3% success</strong></figcaption><video id="ours-video" controls muted playsinline preload="metadata" poster="static/images/tasks/berry-ours.jpg" aria-labelledby="ours-video-label"><source src="static/videos/web/berry-ours.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p id="ours-behavior">Goal: a stable grasp that leaves the berry intact.</p><a id="ours-download" href="static/videos/web/berry-ours.mp4" download aria-label="Download VisualForce video">↓</a></div></figure>
+        </div>
+        <div class="playback-row"><div class="playback-controls" role="group" aria-label="Control both comparison videos"><button id="play-both" type="button">Play both</button><button id="pause-both" class="secondary" type="button">Pause</button><button id="replay-both" class="secondary" type="button">Replay</button></div><p class="note">Playback speeds vary for presentation;<br>clip lengths do not reflect task completion times.</p></div>
+        <p id="playback-status" class="playback-status" role="status" aria-live="polite"></p>
+      </div>
+      <noscript><p>The task picker needs JavaScript. Watch the other recordings directly: <a href="static/videos/web/can-baseline.mp4">can baseline</a>, <a href="static/videos/web/can-ours.mp4">can force search</a>, <a href="static/videos/web/reorientation-baseline.mp4">reorientation baseline</a>, <a href="static/videos/web/reorientation-ours.mp4">reorientation force search</a>, <a href="static/videos/web/plug-baseline.mp4">plug baseline</a>, <a href="static/videos/web/plug-ours.mp4">plug force search</a>.</p></noscript>
+      </div>
+    </section>
+    <section class="container section results-section" id="results" aria-labelledby="results-title">
+      <div class="section-intro"><h2 id="results-title">Results</h2><p>Force search improves success on all four evaluated tasks. Both methods use the same checkpoint and initial-condition distribution.</p></div>
+      <div class="table-wrap"><table class="results-table"><caption>Manipulation success rate · 15 trials per task, per method · <a href="static/papers/paper.pdf#page=5">Figure 5 ↗</a></caption><thead><tr><th scope="col">Task</th><th scope="col">Policy · single sample</th><th scope="col">VisualForce · force search</th></tr></thead><tbody>
+        <tr><th scope="row">Empty-can grasping</th><td><div class="rate"><span>46.7%</span><i aria-hidden="true" style="--rate:46.7%"></i></div></td><td><div class="rate ours"><span>86.7%</span><i aria-hidden="true" style="--rate:86.7%"></i></div></td></tr>
+        <tr><th scope="row">Berry picking</th><td><div class="rate"><span>0.0%</span><i aria-hidden="true" style="--rate:0.0%"></i></div></td><td><div class="rate ours"><span>73.3%</span><i aria-hidden="true" style="--rate:73.3%"></i></div></td></tr>
+        <tr><th scope="row">In-hand reorientation</th><td><div class="rate"><span>6.7%</span><i aria-hidden="true" style="--rate:6.7%"></i></div></td><td><div class="rate ours"><span>46.7%</span><i aria-hidden="true" style="--rate:46.7%"></i></div></td></tr>
+        <tr><th scope="row">Plug insertion</th><td><div class="rate"><span>26.7%</span><i aria-hidden="true" style="--rate:26.7%"></i></div></td><td><div class="rate ours"><span>73.3%</span><i aria-hidden="true" style="--rate:73.3%"></i></div></td></tr>
+      </tbody></table></div>
+      <div class="estimation-result"><div><h3>Force-estimation accuracy</h3><p>Mean episode force-estimation error across three held-out episodes (442 frames), with equal episode weighting. <a href="static/papers/paper.pdf#page=5">Figure 4 ↗</a></p></div><div class="metric"><strong>4.20 <span>N</span></strong><p>Motor current MAE</p></div><div class="metric highlight"><strong>0.91 <span>N</span></strong><p>Visual force MAE</p></div></div>
+    </section>
+    <section class="paper-section section" aria-labelledby="paper-details-title">
+      <div class="container reading-width"><h2 id="paper-details-title">Additional Details</h2>
+
+      <details><summary>Scope and limitations</summary><p>The method uses a task-specific target force obtained from demonstrations and estimates only axial gripping force, rather than a full contact wrench. Reference sensors provide calibration supervision, but are not required during manipulation deployment. Action selection relies on policy-generated force values without online visual force feedback, which limits correction of prediction errors and unexpected contact disturbances.</p></details>
+      <details id="citation"><summary>Citation</summary><div class="citation-card"><button class="copy-button secondary" type="button" data-copy-target="#citation-code">Copy BibTeX</button><pre><code id="citation-code">@misc{chen2026visualforce,
+  title = {Robot Learning with Visual Predicted Force},
+  author = {Chen, Haonan and Wu, Feiyang and Ma, Yuxiang and
+            Mete, Mustafa and Ye, Pengfei and Shen, Junxuan and
+            Zhu, Cheng and Ruggeri, Aurora and Cheung, Kelvin and
+            Mao, Jiayuan and Adelson, Edward and Wu, Jiajun and
+            Howe, Robert D. and Du, Yilun},
+  year = {2026},
+  note = {Manuscript}
+}</code></pre></div><p class="note">Manuscript citation; publication details will be updated when available.</p></details>
+      </div>
+    </section>
+  </main>
+  <footer class="container site-footer"><a class="wordmark" href="#overview">VisualForce<span aria-hidden="true">.</span></a><a href="static/papers/paper.pdf">Read the paper ↗</a></footer>
+</body>
+</html>
