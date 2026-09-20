@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Explore an interactive illustration of compliant gripper deformation as gripping force increases.">
+  <title>VisualForce · Gripper Deformation</title>
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/force-demo.css">
+  <link rel="stylesheet" href="static/css/gripper-demo.css">
+  <script defer src="static/js/gripper-demo.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <nav class="container demo-navigation" aria-label="Demo navigation"><a href="index.html">VisualForce</a><a href="force-demo.html">Explore force search →</a></nav>
+  <main id="main" class="container standalone-demo">
+    <header class="hero"><h1><span>VisualForce:</span> Gripper Deformation</h1><p class="lead">A compliant gripper makes contact force visible.</p></header>
+    <section class="experiment gripper-demo" id="gripper-demo" aria-labelledby="gripper-title">
+      <div class="section-heading"><h2 id="gripper-title">See force through deformation</h2><span class="badge">Interactive illustration</span></div>
+      <p>Increase the gripping force and watch the compliant fingers bend around an object. The dashed outline shows their unloaded shape.</p>
+      <div class="gripper-panels">
+        <figure class="gripper-panel"><figcaption>Fin Ray gripper <span>Illustration based on the gripper in Figures 2–3</span></figcaption>
+          <svg data-gripper-scene viewBox="0 0 460 350" role="img" aria-labelledby="gripper-scene-title gripper-scene-desc"><title id="gripper-scene-title">Compliant fingers under load</title><desc id="gripper-scene-desc">Two tapered green Fin Ray fingers with diagonal ribs and dark contact pads bend around an object above a white base mount as the illustrative force increases. Dashed outlines show the unloaded fingers.</desc></svg>
+          <div class="legend"><span><i class="gripper-line unloaded"></i>Unloaded outline</span><span><i class="gripper-line"></i>Loaded shape</span></div>
+        </figure>
+      </div>
+      <div class="target-control"><label for="gripper-force">Illustrative gripping force <output id="gripper-force-value" for="gripper-force">0.0 N</output></label><input id="gripper-force" type="range" min="0" max="10" step="0.1" value="0" aria-describedby="gripper-model-note"><div class="range-labels"><span>0 N · unloaded</span><span>10 N · more deformation</span></div></div>
+      <div class="gripper-presets" role="group" aria-label="Explore illustrative force levels"><button type="button" data-gripper-force="0" aria-pressed="true">Unloaded</button><button type="button" data-gripper-force="3" aria-pressed="false">Light contact</button><button type="button" data-gripper-force="7" aria-pressed="false">Firm contact</button><button type="button" data-gripper-force="10" aria-pressed="false">Maximum shown</button></div>
+      <p class="gripper-caption">Watch the fingers’ outline and internal ribs change as the load increases.</p>
+      <p class="note" id="gripper-model-note">The shape change illustrates the visual cue; the slider values are illustrative loads, not calibrated measurements or model predictions. In VisualForce, masked Sobel edges reveal the fingers’ internal ribs and shape. The estimator learns signed axial force from reference measurements; its magnitude is used to label demonstrations. <a href="deformation-demo.html">Explore recorded force estimates →</a></p>
+      <noscript><p>Enable JavaScript to explore the illustration. Compliant gripper deformation provides the visual cue used to estimate gripping force.</p></noscript>
+    </section>
+  </main>
+  <footer class="container site-footer"><a href="index.html#method">Read about the method →</a><span>VisualForce · Interactive illustration</span></footer>
+</body>
+</html>

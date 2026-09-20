@@ -11,6 +11,10 @@
   <meta name="twitter:card" content="summary">
   <title>VisualForce · Robot Learning with Visual Predicted Force</title>
   <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/gripper-demo.css">
+  <link rel="stylesheet" href="static/css/deformation-demo.css">
+  <script defer src="static/js/deformation-demo.js"></script>
+  <script defer src="static/js/gripper-demo.js"></script>
   <script defer src="static/js/index.js"></script>
   <script defer src="static/js/force-demo.js"></script>
 </head>
@@ -23,7 +27,7 @@
       <p class="affiliations"><span><sup>1</sup>Harvard University</span><span><sup>2</sup>MIT</span><span><sup>3</sup>University of Pennsylvania</span><span><sup>4</sup>Stanford University</span></p>
       <p class="equal-contribution">* Equal contribution</p>
       <div class="hero-links"><a class="button" href="static/papers/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="#demo">Explore force search <span aria-hidden="true">↓</span></a></div>
-      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#demo">Interactive Demo</a><a href="#video">Experiments</a><a href="#results">Results</a></nav>
+      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#gripper-demo">Deformation Demo</a><a href="#demo">Force Search</a><a href="#video">Experiments</a><a href="#results">Results</a></nav>
     </header>
     <section class="container hero-demo" aria-labelledby="teaser-title">
       <p class="teaser-summary" id="teaser-title"><strong>TL;DR:</strong> Visual force estimation + test-time force search enable force-aware manipulation without dedicated force or tactile sensors at deployment.</p>
@@ -46,20 +50,41 @@
       </div>
     </section>
     <div class="container section demo-section">
-    <section class="experiment" id="demo" aria-labelledby="demo-title">
-      <div class="section-heading"><div><h2 id="demo-title">Interactive Force Search</h2></div><span class="badge">Illustrative data</span></div>
-      <p>Move the target force. Each circle is one action–force candidate; the selected circle identifies the action to execute.</p>
-      <div class="target-control"><label for="target">Target force <output id="target-value" for="target">4.50 N</output></label><input id="target" type="range" min="0" max="10" step="0.05" value="4.5"><div class="range-labels"><span>0 N</span><span>10 N</span></div></div>
-      <div class="legend"><span><i class="dot"></i>Policy candidate</span><span><i class="dot selected"></i>Closest to target</span><span><i class="dot baseline"></i>Single-sample baseline</span></div>
-      <svg id="force-plot" viewBox="0 0 900 260" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Force predictions for 32 illustrative candidates</title><desc id="plot-description">A vertical target line and selected candidate update as you change the target force. Exact selected values are reported below.</desc></svg>
-      <div class="readouts" aria-live="polite" aria-atomic="true">
-        <div class="readout"><span>Single-sample baseline</span><strong id="baseline-action"></strong><p id="baseline-force"></p><small>Chosen without using its force value.</small></div>
-        <div class="readout chosen"><span>Force search · 32 candidates</span><strong id="selected-action"></strong><p id="selected-force"></p><small>Chosen by the smallest absolute target error.</small></div>
+    <section class="experiment gripper-demo" id="gripper-demo" aria-labelledby="gripper-title">
+      <div class="section-heading"><h2 id="gripper-title">See force through deformation</h2><span class="badge">Interactive illustration</span></div>
+      <p>Increase the gripping force and watch the compliant fingers bend around an object. The dashed outline shows their unloaded shape.</p>
+      <div class="gripper-panels">
+        <figure class="gripper-panel"><figcaption>Fin Ray gripper <span>Illustration based on the gripper in Figures 2–3</span></figcaption>
+          <svg data-gripper-scene viewBox="0 0 460 350" role="img" aria-labelledby="gripper-scene-title gripper-scene-desc"><title id="gripper-scene-title">Compliant fingers under load</title><desc id="gripper-scene-desc">Two tapered green Fin Ray fingers with diagonal ribs and dark contact pads bend around an object above a white base mount as the illustrative force increases. Dashed outlines show the unloaded fingers.</desc></svg>
+          <div class="legend"><span><i class="gripper-line unloaded"></i>Unloaded outline</span><span><i class="gripper-line"></i>Loaded shape</span></div>
+        </figure>
       </div>
-      <div class="actions"><button id="draw" type="button">Draw another baseline sample</button><button id="reset" type="button" class="secondary">Reset</button></div>
-      <p class="note">These 32 values are synthetic examples, not model outputs or a reproduction of Figure 8. Moving the slider illustrates selection; it does not predict a new robot rollout or success rate.</p>
-      <details><summary>What happens on the real robot?</summary><p>The target is chosen from task demonstrations. The policy jointly generates actions and forces; the visual force estimator does not score candidates at deployment. Only the selected end-effector action is sent to the robot. Force is used for selection, rather than sent as a force command. See Section III-D and Algorithm 1.</p></details>
-      <noscript><p>Enable JavaScript to explore the demo. Force search chooses the candidate that minimizes |predicted force − target force|.</p></noscript>
+      <div class="target-control"><label for="gripper-force">Illustrative gripping force <output id="gripper-force-value" for="gripper-force">0.0 N</output></label><input id="gripper-force" type="range" min="0" max="10" step="0.1" value="0" aria-describedby="gripper-model-note"><div class="range-labels"><span>0 N · unloaded</span><span>10 N · more deformation</span></div></div>
+      <div class="gripper-presets" role="group" aria-label="Explore illustrative force levels"><button type="button" data-gripper-force="0" aria-pressed="true">Unloaded</button><button type="button" data-gripper-force="3" aria-pressed="false">Light contact</button><button type="button" data-gripper-force="7" aria-pressed="false">Firm contact</button><button type="button" data-gripper-force="10" aria-pressed="false">Maximum shown</button></div>
+      <p class="gripper-caption">Watch the fingers’ outline and internal ribs change as the load increases.</p>
+      <p class="note" id="gripper-model-note">The shape change illustrates the visual cue; the slider values are illustrative loads, not calibrated measurements or model predictions. In VisualForce, masked Sobel edges reveal the fingers’ internal ribs and shape. The estimator learns signed axial force from reference measurements; its magnitude is used to label demonstrations. <a href="#recorded-force">Explore recorded force estimates ↓</a></p>
+      <noscript><p>Enable JavaScript to explore the illustration. Compliant gripper deformation provides the visual cue used to estimate gripping force.</p></noscript>
+    </section>
+    </div>
+    <div class="container section demo-section">
+    <section class="experiment" id="demo" aria-labelledby="demo-title">
+      <div class="section-heading"><h2 id="demo-title">Interactive Force Search</h2><span class="badge">Recorded candidates · Empty-can grasping</span></div>
+      <p>The policy proposes 32 possible actions, each paired with a predicted force. Force search executes the action whose force is closest to the target.</p>
+      <ol class="force-search-steps"><li><span>1</span>Set a target force</li><li><span>2</span>Compare 32 predictions</li><li><span>3</span>Execute the closest match</li></ol>
+      <div class="target-control"><label for="target">Target force <output id="target-value" for="target">3.04 N</output></label><input id="target" type="range" min="2.5" max="7" step="0.01" value="3.04" disabled aria-describedby="force-search-note"><div class="range-labels"><span>2.5 N · lower target</span><span>7 N · higher target</span></div></div>
+      <div class="force-target-presets" role="group" aria-label="Try target forces"><button type="button" id="reset" disabled>Paper example · 3.04 N</button><button type="button" data-force-target="5.4" disabled>Try 5.40 N</button><button type="button" data-force-target="6.2" disabled>Try 6.20 N</button></div>
+      <div class="legend"><span><i class="dot"></i>One candidate action</span><span><i class="dot selected"></i>Action to execute</span><span><i class="dot baseline"></i>Single sample</span></div>
+      <svg id="force-plot" viewBox="0 0 900 310" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Force predictions for 32 recorded candidate actions</title><desc id="plot-description">A target line shows the desired force. The green circle marks the closest candidate. A bracket shows the remaining distance to the target. Vertical positions only separate the dots for readability.</desc></svg>
+      <p class="note force-scatter-note">Left to right: increasing predicted force. Vertical scatter only separates the candidates.</p>
+      <div class="force-decision" aria-live="polite" aria-atomic="true"><p id="force-decision">Loading the recorded candidates…</p><p id="force-context" class="note"></p></div>
+      <div class="readouts" aria-live="polite" aria-atomic="true">
+        <div class="readout"><span>Without force search · one sample</span><strong id="baseline-action">—</strong><p id="baseline-force"></p><small>Execute a sampled action without comparing force.</small></div>
+        <div class="readout chosen"><span>With force search · best of 32</span><strong id="selected-action">—</strong><p id="selected-force"></p><small>Execute the action with the smallest target error.</small></div>
+      </div>
+      <div class="actions"><button id="draw" type="button" disabled>Try another single sample</button></div>
+      <p class="note" id="force-search-note">These are the 32 recorded policy predictions used in Figure 8. The saved target is 3.04 N; changing it explores selection among the same candidates, not a new robot rollout. Forces are predictions, not measured outcomes. <a href="static/data/force-candidates.json" download>Download candidate data</a>.</p>
+      <details><summary>What happens on the real robot?</summary><p>The target is chosen from task demonstrations. The policy jointly generates actions and forces; the visual force estimator does not score candidates at deployment. Only the selected end-effector action is sent to the robot. The selected force is used for choosing the action, not sent as a force command. See Section III-D and Algorithm 1.</p></details>
+      <noscript><p>Enable JavaScript to explore the demo. For the recorded 3.04 N target, force search selects the candidate predicting 4.45 N—the closest available prediction. <a href="static/papers/paper.pdf#page=6">See Figure 8 in the paper.</a></p></noscript>
     </section>
     </div>
     <section class="section experiments-section" id="video" aria-labelledby="video-title">
@@ -86,6 +111,17 @@
         <tr><th scope="row">Plug insertion</th><td><div class="rate"><span>26.7%</span><i aria-hidden="true" style="--rate:26.7%"></i></div></td><td><div class="rate ours"><span>73.3%</span><i aria-hidden="true" style="--rate:73.3%"></i></div></td></tr>
       </tbody></table></div>
       <div class="estimation-result"><div><h3>Force-estimation accuracy</h3><p>Mean episode force-estimation error across three held-out episodes (442 frames), with equal episode weighting. <a href="static/papers/paper.pdf#page=5">Figure 4 ↗</a></p></div><div class="metric"><strong>4.20 <span>N</span></strong><p>Motor current MAE</p></div><div class="metric highlight"><strong>0.91 <span>N</span></strong><p>Visual force MAE</p></div></div>
+    <section class="deformation-viewer recorded-force-result" id="recorded-force" aria-labelledby="deformation-title" data-force-source="static/data/force-trajectory.json">
+      <h3 id="deformation-title">Measured and predicted force over time</h3>
+      <p>Drag the time slider to inspect the reference measurement and visual force estimate at each recorded sample.</p>
+      <div class="legend"><span><i class="dot measured-dot"></i>Measured force</span><span><i class="dot predicted-dot"></i>Visually predicted force</span><span><i class="dot current-dot"></i>Motor-current estimate</span></div>
+      <svg id="deformation-plot" viewBox="0 0 900 300" role="img" aria-labelledby="deformation-plot-title deformation-plot-description"><title id="deformation-plot-title">Recorded force over time</title><desc id="deformation-plot-description">Measured force, visually predicted force, and motor-current force estimates from the paper. A cursor follows the selected timestamp, with exact values shown below.</desc></svg>
+      <div class="target-control"><label for="deformation-time">Recording time <output id="deformation-time-value" for="deformation-time">—</output></label><input id="deformation-time" type="range" min="0" max="0" step="1" value="0" disabled><div class="range-labels"><span>0 s</span><span id="deformation-duration">—</span></div></div>
+      <div class="readouts force-recording-readouts" aria-live="polite" aria-atomic="true"><div class="readout"><span>Measured force</span><strong id="deformation-measured">—</strong><small>Reference force measurement</small></div><div class="readout predicted-readout"><span>Visually predicted force</span><strong id="deformation-predicted">—</strong><small>Estimate from gripper deformation</small></div><div class="readout current-readout"><span>Motor-current estimate</span><strong id="deformation-current">—</strong><small>Linear motor-current baseline</small></div></div>
+      <p class="note data-note">One recorded sequence from <a href="static/papers/paper.pdf#page=5">Figure 4(b)</a>. The 0.91 N MAE above summarizes three held-out episodes with equal episode weighting, not this sequence alone. Synchronized wrist-camera frames are not included.</p>
+      <p id="deformation-status" class="note" role="status">Loading the recorded force samples…</p>
+      <noscript><p>Enable JavaScript to explore the force recording, or view Figure 4 in the paper.</p></noscript>
+    </section>
     </section>
     <section class="paper-section section" aria-labelledby="paper-details-title">
       <div class="container reading-width"><h2 id="paper-details-title">Additional Details</h2>

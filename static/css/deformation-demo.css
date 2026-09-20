@@ -1,5 +1,5 @@
 /* Reuses the academic site's controls and readouts. */
-.deformation-viewer { --measured:#555; --predicted:var(--green); }
+.deformation-viewer { --measured:#555; --predicted:var(--green); --current:#b56b21; }
 .measured-dot { background:var(--measured); }
 .predicted-dot { background:var(--predicted); }
 .predicted-readout { border-top-color:var(--predicted); }
@@ -8,3 +8,14 @@
 #deformation-time-value { color:var(--ink); }
 #deformation-time { accent-color:var(--accent); }
 #deformation-plot .predicted-trace { stroke-dasharray:7 4; }
+
+.recorded-force-result { max-width:900px; margin:32px auto 0; padding-top:24px; border-top:1px solid var(--line); }
+.recorded-force-result>p { font-size:15px; }
+.recorded-force-result>p.note { font-size:13px; }
+
+.current-dot { background:var(--current); }
+.current-readout { border-top-color:var(--current); }
+.current-readout strong { color:var(--current); }
+#deformation-plot .current-trace { stroke-dasharray:2 4; }
+.force-recording-readouts { grid-template-columns:repeat(3,minmax(0,1fr)); }
+@media(max-width:550px) { .force-recording-readouts { grid-template-columns:1fr; gap:14px; } }

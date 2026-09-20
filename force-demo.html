@@ -27,19 +27,23 @@
       </ol>
     </section>
     <section class="experiment section" aria-labelledby="demo-title">
-      <div class="section-heading"><div><h2 id="demo-title">Interactive Force Search</h2></div><span class="badge">Illustrative data</span></div>
-      <p>Move the target force. Each circle is one action–force candidate; the selected circle identifies the action to execute.</p>
-      <div class="target-control"><label for="target">Target force <output id="target-value" for="target">4.50 N</output></label><input id="target" type="range" min="0" max="10" step="0.05" value="4.5"><div class="range-labels"><span>0 N</span><span>10 N</span></div></div>
-      <div class="legend"><span><i class="dot"></i>Policy candidate</span><span><i class="dot selected"></i>Closest to target</span><span><i class="dot baseline"></i>Single-sample baseline</span></div>
-      <svg id="force-plot" viewBox="0 0 900 260" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Force predictions for 32 illustrative candidates</title><desc id="plot-description">A vertical target line and selected candidate update as you change the target force. Exact selected values are reported below.</desc></svg>
+      <div class="section-heading"><h2 id="demo-title">Interactive Force Search</h2><span class="badge">Recorded candidates · Empty-can grasping</span></div>
+      <p>The policy proposes 32 possible actions, each paired with a predicted force. Force search executes the action whose force is closest to the target.</p>
+      <ol class="force-search-steps"><li><span>1</span>Set a target force</li><li><span>2</span>Compare 32 predictions</li><li><span>3</span>Execute the closest match</li></ol>
+      <div class="target-control"><label for="target">Target force <output id="target-value" for="target">3.04 N</output></label><input id="target" type="range" min="2.5" max="7" step="0.01" value="3.04" disabled aria-describedby="force-search-note"><div class="range-labels"><span>2.5 N · lower target</span><span>7 N · higher target</span></div></div>
+      <div class="force-target-presets" role="group" aria-label="Try target forces"><button type="button" id="reset" disabled>Paper example · 3.04 N</button><button type="button" data-force-target="5.4" disabled>Try 5.40 N</button><button type="button" data-force-target="6.2" disabled>Try 6.20 N</button></div>
+      <div class="legend"><span><i class="dot"></i>One candidate action</span><span><i class="dot selected"></i>Action to execute</span><span><i class="dot baseline"></i>Single sample</span></div>
+      <svg id="force-plot" viewBox="0 0 900 310" role="img" aria-labelledby="plot-title plot-description"><title id="plot-title">Force predictions for 32 recorded candidate actions</title><desc id="plot-description">A target line shows the desired force. The green circle marks the closest candidate. A bracket shows the remaining distance to the target. Vertical positions only separate the dots for readability.</desc></svg>
+      <p class="note force-scatter-note">Left to right: increasing predicted force. Vertical scatter only separates the candidates.</p>
+      <div class="force-decision" aria-live="polite" aria-atomic="true"><p id="force-decision">Loading the recorded candidates…</p><p id="force-context" class="note"></p></div>
       <div class="readouts" aria-live="polite" aria-atomic="true">
-        <div class="readout"><span>Single-sample baseline</span><strong id="baseline-action"></strong><p id="baseline-force"></p><small>Chosen without using its force value.</small></div>
-        <div class="readout chosen"><span>Force search · 32 candidates</span><strong id="selected-action"></strong><p id="selected-force"></p><small>Chosen by the smallest absolute target error.</small></div>
+        <div class="readout"><span>Without force search · one sample</span><strong id="baseline-action">—</strong><p id="baseline-force"></p><small>Execute a sampled action without comparing force.</small></div>
+        <div class="readout chosen"><span>With force search · best of 32</span><strong id="selected-action">—</strong><p id="selected-force"></p><small>Execute the action with the smallest target error.</small></div>
       </div>
-      <div class="actions"><button id="draw" type="button">Draw another baseline sample</button><button id="reset" type="button" class="secondary">Reset</button></div>
-      <p class="note">These 32 values are synthetic examples, not model outputs or a reproduction of Figure 8. Moving the slider illustrates selection; it does not predict a new robot rollout or success rate.</p>
-      <details><summary>What happens on the real robot?</summary><p>The target is chosen from task demonstrations. The policy jointly generates actions and forces; the visual force estimator does not score candidates at deployment. Only the selected end-effector action is sent to the robot. Force is used for selection, rather than sent as a force command. See Section III-D and Algorithm 1.</p></details>
-      <noscript><p>Enable JavaScript to explore the demo. Force search chooses the candidate that minimizes |predicted force − target force|.</p></noscript>
+      <div class="actions"><button id="draw" type="button" disabled>Try another single sample</button></div>
+      <p class="note" id="force-search-note">These are the 32 recorded policy predictions used in Figure 8. The saved target is 3.04 N; changing it explores selection among the same candidates, not a new robot rollout. Forces are predictions, not measured outcomes. <a href="static/data/force-candidates.json" download>Download candidate data</a>.</p>
+      <details><summary>What happens on the real robot?</summary><p>The target is chosen from task demonstrations. The policy jointly generates actions and forces; the visual force estimator does not score candidates at deployment. Only the selected end-effector action is sent to the robot. The selected force is used for choosing the action, not sent as a force command. See Section III-D and Algorithm 1.</p></details>
+      <noscript><p>Enable JavaScript to explore the demo. For the recorded 3.04 N target, force search selects the candidate predicting 4.45 N—the closest available prediction. <a href="static/papers/paper.pdf#page=6">See Figure 8 in the paper.</a></p></noscript>
     </section>
     <section class="section reading-width" aria-labelledby="results-title"><h2 id="results-title">Results</h2>
       <p>Reported results from Figure 5: 15 trials per task, with the same policy checkpoint for both methods.</p>

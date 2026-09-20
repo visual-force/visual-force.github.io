@@ -47,3 +47,16 @@ details { border-top:1px solid var(--line); padding-top:16px; font-size:15px; }s
 
 /* Scientific colors are reserved for the force visualization. */
 .rate.ours,.metric.highlight strong { color:var(--accent); }
+
+.force-search-steps { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; padding:0; margin:24px 0; list-style:none; font-size:14px; }
+.force-search-steps li { display:flex; align-items:center; gap:9px; }
+.force-search-steps span { display:inline-flex; align-items:center; justify-content:center; flex-shrink:0; width:26px; height:26px; border-radius:50%; color:var(--accent); background:#f6eded; }
+.force-target-presets { display:flex; flex-wrap:wrap; gap:8px; margin:-6px 0 22px; }
+.force-target-presets button[aria-pressed=true] { background:#f6eded; border-color:var(--accent); }
+.force-target-label { fill:var(--accent); }
+.force-decision { padding:16px 18px; border-left:3px solid var(--green); background:#f2f7f4; margin-top:14px; }
+.force-decision p { margin:0; }
+.force-decision p:first-child { font-size:17px; font-weight:600; }
+.force-decision .note { margin-top:6px; }
+button:disabled { opacity:.55; cursor:default; }
+@media(max-width:650px) { .force-search-steps { grid-template-columns:1fr; gap:10px; }.force-decision p:first-child { font-size:16px; } }

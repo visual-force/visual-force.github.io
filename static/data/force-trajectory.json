@@ -4,647 +4,776 @@
     {
       "time": 0.0,
       "measured": 0.076125417,
-      "predicted": 0.345004946
+      "predicted": 0.345004946,
+      "current": 6.679098642
     },
     {
       "time": 0.099757642,
       "measured": 0.021616765,
-      "predicted": 0.343302578
+      "predicted": 0.343302578,
+      "current": 5.541135787
     },
     {
       "time": 0.200013289,
       "measured": 0.154969396,
-      "predicted": 0.285642505
+      "predicted": 0.285642505,
+      "current": 4.779694936
     },
     {
       "time": 0.301792935,
       "measured": 0.116552612,
-      "predicted": 0.255624712
+      "predicted": 0.255624712,
+      "current": 4.527822224
     },
     {
       "time": 0.400321763,
       "measured": 0.086815504,
-      "predicted": 0.238296747
+      "predicted": 0.238296747,
+      "current": 7.035193953
     },
     {
       "time": 0.500541507,
       "measured": 0.02884948,
-      "predicted": 0.661270022
+      "predicted": 0.661270022,
+      "current": 8.815479465
     },
     {
       "time": 0.60036488,
       "measured": 0.124109808,
-      "predicted": 0.270807445
+      "predicted": 0.270807445,
+      "current": 9.963513759
     },
     {
       "time": 0.701095006,
       "measured": 0.130980169,
-      "predicted": 0.247296929
+      "predicted": 0.247296929,
+      "current": 7.60792142
     },
     {
       "time": 0.803016576,
       "measured": 0.1,
-      "predicted": 0.541059375
+      "predicted": 0.541059375,
+      "current": 7.612186952
     },
     {
       "time": 0.900327249,
       "measured": 0.117334148,
-      "predicted": 0.348687351
+      "predicted": 0.348687351,
+      "current": 9.44708945
     },
     {
       "time": 1.000265468,
       "measured": 0.162516247,
-      "predicted": 0.376516134
+      "predicted": 0.376516134,
+      "current": 6.972190341
     },
     {
       "time": 1.099490712,
       "measured": 0.191742612,
-      "predicted": 0.35746026
+      "predicted": 0.35746026,
+      "current": 6.972190341
     },
     {
       "time": 1.200445152,
       "measured": 0.074746431,
-      "predicted": 0.196316272
+      "predicted": 0.196316272,
+      "current": 7.009455438
     },
     {
       "time": 1.300188868,
       "measured": 0.024351908,
-      "predicted": 0.247464687
+      "predicted": 0.247464687,
+      "current": 7.954909386
     },
     {
       "time": 1.400635321,
       "measured": 0.089419096,
-      "predicted": 0.320333838
+      "predicted": 0.320333838,
+      "current": 6.754965179
     },
     {
       "time": 1.499897294,
       "measured": 0.0,
-      "predicted": 0.306302518
+      "predicted": 0.306302518,
+      "current": 7.733781388
     },
     {
       "time": 1.600444847,
       "measured": 0.0,
-      "predicted": 0.724244118
+      "predicted": 0.724244118,
+      "current": 7.480506167
     },
     {
       "time": 1.700427313,
       "measured": 0.0,
-      "predicted": 0.223381609
+      "predicted": 0.223381609,
+      "current": 7.343013705
     },
     {
       "time": 1.801014925,
       "measured": 0.0,
-      "predicted": 0.32223171
+      "predicted": 0.32223171,
+      "current": 6.988355928
     },
     {
       "time": 1.900332071,
       "measured": 0.022922838,
-      "predicted": 0.183681771
+      "predicted": 0.183681771,
+      "current": 7.379477419
     },
     {
       "time": 2.001423795,
       "measured": 0.079637665,
-      "predicted": 0.618585229
+      "predicted": 0.618585229,
+      "current": 7.998171729
     },
     {
       "time": 2.100448398,
       "measured": 0.0,
-      "predicted": 0.348669738
+      "predicted": 0.348669738,
+      "current": 8.012018304
     },
     {
       "time": 2.201688745,
       "measured": 0.0,
-      "predicted": 0.173983052
+      "predicted": 0.173983052,
+      "current": 8.295315761
     },
     {
       "time": 2.300603062,
       "measured": 0.0,
-      "predicted": 0.549613595
+      "predicted": 0.549613595,
+      "current": 6.58742993
     },
     {
       "time": 2.39973427,
       "measured": 0.0,
-      "predicted": 0.930072665
+      "predicted": 0.930072665,
+      "current": 6.602406209
     },
     {
       "time": 2.500443982,
       "measured": 0.0,
-      "predicted": 0.469249666
+      "predicted": 0.469249666,
+      "current": 7.105089198
     },
     {
       "time": 2.601469338,
       "measured": 0.013566916,
-      "predicted": 0.413000405
+      "predicted": 0.413000405,
+      "current": 7.240563522
     },
     {
       "time": 2.706670752,
       "measured": 0.105435823,
-      "predicted": 0.855144501
+      "predicted": 0.855144501,
+      "current": 7.510385604
     },
     {
       "time": 2.803539903,
       "measured": 0.12,
-      "predicted": 0.529366553
+      "predicted": 0.529366553,
+      "current": 7.67284298
     },
     {
       "time": 2.899816382,
       "measured": 0.116456256,
-      "predicted": 0.391957432
+      "predicted": 0.391957432,
+      "current": 6.74265496
     },
     {
       "time": 3.001256936,
       "measured": 0.073710142,
-      "predicted": 0.374940574
+      "predicted": 0.374940574,
+      "current": 7.602010435
     },
     {
       "time": 3.101076615,
       "measured": 0.017403535,
-      "predicted": 0.219252482
+      "predicted": 0.219252482,
+      "current": 7.340555936
     },
     {
       "time": 3.201409527,
       "measured": 0.14,
-      "predicted": 1.207105517
+      "predicted": 1.207105517,
+      "current": 6.954863451
     },
     {
       "time": 3.301345711,
       "measured": 0.102195598,
-      "predicted": 1.241799355
+      "predicted": 1.241799355,
+      "current": 6.58742993
     },
     {
       "time": 3.400782132,
       "measured": 0.0,
-      "predicted": 1.518334031
+      "predicted": 1.518334031,
+      "current": 6.582341285
     },
     {
       "time": 3.499751483,
       "measured": 0.0,
-      "predicted": 0.349066854
+      "predicted": 0.349066854,
+      "current": 6.474235595
     },
     {
       "time": 3.600517822,
       "measured": 0.019109316,
-      "predicted": 1.144427061
+      "predicted": 1.144427061,
+      "current": 6.924712333
     },
     {
       "time": 3.699876463,
       "measured": 0.076795992,
-      "predicted": 0.214848772
+      "predicted": 0.214848772,
+      "current": 5.717037919
     },
     {
       "time": 3.800160549,
       "measured": 0.0,
-      "predicted": 0.380827188
+      "predicted": 0.380827188,
+      "current": 6.58742993
     },
     {
       "time": 3.899944426,
       "measured": 0.0,
-      "predicted": 0.827313364
+      "predicted": 0.827313364,
+      "current": 6.56733316
     },
     {
       "time": 3.999965071,
       "measured": 0.0,
-      "predicted": 0.347356975
+      "predicted": 0.347356975,
+      "current": 5.958328083
     },
     {
       "time": 4.100213302,
       "measured": 0.049549564,
-      "predicted": 0.291691363
+      "predicted": 0.291691363,
+      "current": 6.365844842
     },
     {
       "time": 4.200251345,
       "measured": 0.170068188,
-      "predicted": 0.600071669
+      "predicted": 0.600071669,
+      "current": 7.308680165
     },
     {
       "time": 4.301196655,
       "measured": 0.275171228,
-      "predicted": 0.75275296
+      "predicted": 0.75275296,
+      "current": 6.002031233
     },
     {
       "time": 4.40063034,
       "measured": 0.364610953,
-      "predicted": 0.611401796
+      "predicted": 0.611401796,
+      "current": 7.209265273
     },
     {
       "time": 4.501251632,
       "measured": 0.469391018,
-      "predicted": 1.060289502
+      "predicted": 1.060289502,
+      "current": 6.757417215
     },
     {
       "time": 4.599838911,
       "measured": 0.959612467,
-      "predicted": 0.80139792
+      "predicted": 0.80139792,
+      "current": 7.745543625
     },
     {
       "time": 4.700621948,
       "measured": 1.67167933,
-      "predicted": 0.638520479
+      "predicted": 0.638520479,
+      "current": 7.874795637
     },
     {
       "time": 4.800905381,
       "measured": 2.292630547,
-      "predicted": 0.835909724
+      "predicted": 0.835909724,
+      "current": 8.018946445
     },
     {
       "time": 4.900955126,
       "measured": 2.8173297,
-      "predicted": 3.221936941
+      "predicted": 3.221936941,
+      "current": 8.469415923
     },
     {
       "time": 4.999637788,
       "measured": 3.164483889,
-      "predicted": 2.14612627
+      "predicted": 2.14612627,
+      "current": 7.521424616
     },
     {
       "time": 5.100311979,
       "measured": 3.34,
-      "predicted": 2.616631746
+      "predicted": 2.616631746,
+      "current": 8.799046171
     },
     {
       "time": 5.202316245,
       "measured": 3.371274758,
-      "predicted": 1.525925279
+      "predicted": 1.525925279,
+      "current": 9.616246137
     },
     {
       "time": 5.300868446,
       "measured": 3.494692739,
-      "predicted": 2.256972313
+      "predicted": 2.256972313,
+      "current": 8.772135805
     },
     {
       "time": 5.400414835,
       "measured": 3.715007056,
-      "predicted": 2.81392765
+      "predicted": 2.81392765,
+      "current": 8.909768264
     },
     {
       "time": 5.499986141,
       "measured": 3.8,
-      "predicted": 2.132122993
+      "predicted": 2.132122993,
+      "current": 9.288784752
     },
     {
       "time": 5.601533572,
       "measured": 3.80445696,
-      "predicted": 2.764682055
+      "predicted": 2.764682055,
+      "current": 9.543121722
     },
     {
       "time": 5.702108837,
       "measured": 3.897391562,
-      "predicted": 3.291701555
+      "predicted": 3.291701555,
+      "current": 9.651799234
     },
     {
       "time": 5.80083383,
       "measured": 4.255773604,
-      "predicted": 2.257386208
+      "predicted": 2.257386208,
+      "current": 9.429505919
     },
     {
       "time": 5.89952478,
       "measured": 4.720481458,
-      "predicted": 3.498250484
+      "predicted": 3.498250484,
+      "current": 9.925363293
     },
     {
       "time": 6.000689233,
       "measured": 5.079250177,
-      "predicted": 4.79500246
+      "predicted": 4.79500246,
+      "current": 10.05510173
     },
     {
       "time": 6.099512013,
       "measured": 5.448508279,
-      "predicted": 5.725728512
+      "predicted": 5.725728512,
+      "current": 10.18184066
     },
     {
       "time": 6.199760232,
       "measured": 5.861081344,
-      "predicted": 5.386931896
+      "predicted": 5.386931896,
+      "current": 10.29906402
     },
     {
       "time": 6.300452757,
       "measured": 6.246855318,
-      "predicted": 4.71265316
+      "predicted": 4.71265316,
+      "current": 10.07341345
     },
     {
       "time": 6.40059953,
       "measured": 6.50422514,
-      "predicted": 5.987580776
+      "predicted": 5.987580776,
+      "current": 10.720498
     },
     {
       "time": 6.499944747,
       "measured": 6.516192228,
-      "predicted": 5.309104443
+      "predicted": 5.309104443,
+      "current": 11.42074684
     },
     {
       "time": 6.601267837,
       "measured": 6.516612699,
-      "predicted": 5.965503216
+      "predicted": 5.965503216,
+      "current": 10.20126077
     },
     {
       "time": 6.699742485,
       "measured": 6.586841365,
-      "predicted": 6.236407757
+      "predicted": 6.236407757,
+      "current": 10.6951127
     },
     {
       "time": 6.800292319,
       "measured": 6.592429794,
-      "predicted": 6.882070065
+      "predicted": 6.882070065,
+      "current": 10.8196275
     },
     {
       "time": 6.901128163,
       "measured": 6.56,
-      "predicted": 6.436387539
+      "predicted": 6.436387539,
+      "current": 10.8196275
     },
     {
       "time": 7.003187778,
       "measured": 6.556341198,
-      "predicted": 6.076025486
+      "predicted": 6.076025486,
+      "current": 10.8196275
     },
     {
       "time": 7.10204466,
       "measured": 6.532415667,
-      "predicted": 6.204984665
+      "predicted": 6.204984665,
+      "current": 10.8196275
     },
     {
       "time": 7.19954092,
       "measured": 6.532602052,
-      "predicted": 6.546090126
+      "predicted": 6.546090126,
+      "current": 10.81615301
     },
     {
       "time": 7.300203704,
       "measured": 6.668682491,
-      "predicted": 6.680733204
+      "predicted": 6.680733204,
+      "current": 10.70818901
     },
     {
       "time": 7.401108342,
       "measured": 6.753609746,
-      "predicted": 6.183474541
+      "predicted": 6.183474541,
+      "current": 11.23726362
     },
     {
       "time": 7.501166504,
       "measured": 6.872880329,
-      "predicted": 6.602776527
+      "predicted": 6.602776527,
+      "current": 11.93476366
     },
     {
       "time": 7.600859782,
       "measured": 6.97842946,
-      "predicted": 6.392586231
+      "predicted": 6.392586231,
+      "current": 11.0864934
     },
     {
       "time": 7.70024677,
       "measured": 7.05711996,
-      "predicted": 6.168662548
+      "predicted": 6.168662548,
+      "current": 11.3370063
     },
     {
       "time": 7.800527684,
       "measured": 7.036990853,
-      "predicted": 6.735938072
+      "predicted": 6.735938072,
+      "current": 11.46084848
     },
     {
       "time": 7.902028343,
       "measured": 7.009554653,
-      "predicted": 6.809781551
+      "predicted": 6.809781551,
+      "current": 11.4541662
     },
     {
       "time": 7.999614338,
       "measured": 6.983417609,
-      "predicted": 6.959916592
+      "predicted": 6.959916592,
+      "current": 11.32542257
     },
     {
       "time": 8.100499162,
       "measured": 7.171422257,
-      "predicted": 5.954864025
+      "predicted": 5.954864025,
+      "current": 11.10434485
     },
     {
       "time": 8.200567288,
       "measured": 7.688802913,
-      "predicted": 7.558840275
+      "predicted": 7.558840275,
+      "current": 11.85516442
     },
     {
       "time": 8.300033477,
       "measured": 7.965830376,
-      "predicted": 6.84114027
+      "predicted": 6.84114027,
+      "current": 12.12801256
     },
     {
       "time": 8.399940562,
       "measured": 8.002193654,
-      "predicted": 6.792171001
+      "predicted": 6.792171001,
+      "current": 12.95976602
     },
     {
       "time": 8.500908803,
       "measured": 8.06019395,
-      "predicted": 8.540913582
+      "predicted": 8.540913582,
+      "current": 11.7120945
     },
     {
       "time": 8.600441734,
       "measured": 8.232360486,
-      "predicted": 8.719367027
+      "predicted": 8.719367027,
+      "current": 11.57999042
     },
     {
       "time": 8.69974277,
       "measured": 8.28,
-      "predicted": 7.127744675
+      "predicted": 7.127744675,
+      "current": 11.33260429
     },
     {
       "time": 8.799998131,
       "measured": 8.28,
-      "predicted": 7.722909451
+      "predicted": 7.722909451,
+      "current": 11.33569622
     },
     {
       "time": 8.90041658,
       "measured": 8.269585516,
-      "predicted": 7.336514473
+      "predicted": 7.336514473,
+      "current": 11.45647296
     },
     {
       "time": 9.000928372,
       "measured": 8.230149202,
-      "predicted": 7.448017597
+      "predicted": 7.448017597,
+      "current": 11.33260429
     },
     {
       "time": 9.107161407,
       "measured": 8.143464958,
-      "predicted": 7.478330612
+      "predicted": 7.478330612,
+      "current": 11.33260429
     },
     {
       "time": 9.200602918,
       "measured": 8.106510881,
-      "predicted": 5.948089123
+      "predicted": 5.948089123,
+      "current": 11.33745864
     },
     {
       "time": 9.301179713,
       "measured": 8.137746489,
-      "predicted": 6.16658926
+      "predicted": 6.16658926,
+      "current": 11.46084848
     },
     {
       "time": 9.40119929,
       "measured": 8.12,
-      "predicted": 7.235383511
+      "predicted": 7.235383511,
+      "current": 11.4552237
     },
     {
       "time": 9.502107199,
       "measured": 8.116139996,
-      "predicted": 5.935101032
+      "predicted": 5.935101032,
+      "current": 11.36654121
     },
     {
       "time": 9.600365296,
       "measured": 8.113669041,
-      "predicted": 6.217498302
+      "predicted": 6.217498302,
+      "current": 11.96929755
     },
     {
       "time": 9.700645107,
       "measured": 8.165870964,
-      "predicted": 7.335862637
+      "predicted": 7.335862637,
+      "current": 11.8554436
     },
     {
       "time": 9.79959689,
       "measured": 8.164181146,
-      "predicted": 7.888153553
+      "predicted": 7.888153553,
+      "current": 12.10209728
     },
     {
       "time": 9.900535301,
       "measured": 8.152590481,
-      "predicted": 9.167080879
+      "predicted": 9.167080879,
+      "current": 12.10684363
     },
     {
       "time": 10.00087412,
       "measured": 8.17244679,
-      "predicted": 6.906633854
+      "predicted": 6.906633854,
+      "current": 12.23553932
     },
     {
       "time": 10.10072032,
       "measured": 8.136639277,
-      "predicted": 7.694664478
+      "predicted": 7.694664478,
+      "current": 12.35362166
     },
     {
       "time": 10.19993575,
       "measured": 8.134455844,
-      "predicted": 9.030479431
+      "predicted": 9.030479431,
+      "current": 12.23034148
     },
     {
       "time": 10.30031101,
       "measured": 8.185160467,
-      "predicted": 8.13609314
+      "predicted": 8.13609314,
+      "current": 12.23034148
     },
     {
       "time": 10.40031764,
       "measured": 8.189179157,
-      "predicted": 8.098834038
+      "predicted": 8.098834038,
+      "current": 12.23034148
     },
     {
       "time": 10.50057269,
       "measured": 8.149896812,
-      "predicted": 7.260734081
+      "predicted": 7.260734081,
+      "current": 12.23516056
     },
     {
       "time": 10.60055306,
       "measured": 8.12,
-      "predicted": 8.605752945
+      "predicted": 8.605752945,
+      "current": 12.35858567
     },
     {
       "time": 10.69978088,
       "measured": 8.108554589,
-      "predicted": 7.378864765
+      "predicted": 7.378864765,
+      "current": 12.35505184
     },
     {
       "time": 10.80179715,
       "measured": 8.06,
-      "predicted": 7.587474823
+      "predicted": 7.587474823,
+      "current": 12.23034148
     },
     {
       "time": 10.90148383,
       "measured": 8.06,
-      "predicted": 8.545895576
+      "predicted": 8.545895576,
+      "current": 12.23034148
     },
     {
       "time": 11.00038799,
       "measured": 8.066083488,
-      "predicted": 7.297670841
+      "predicted": 7.297670841,
+      "current": 12.2349165
     },
     {
       "time": 11.10047136,
       "measured": 8.073222836,
-      "predicted": 6.840590954
+      "predicted": 6.840590954,
+      "current": 12.35390308
     },
     {
       "time": 11.19986921,
       "measured": 8.026210129,
-      "predicted": 6.996869564
+      "predicted": 6.996869564,
+      "current": 12.23034148
     },
     {
       "time": 11.30042764,
       "measured": 7.964328635,
-      "predicted": 6.861346722
+      "predicted": 6.861346722,
+      "current": 12.23034148
     },
     {
       "time": 11.40216476,
       "measured": 8.005699159,
-      "predicted": 7.154927731
+      "predicted": 7.154927731,
+      "current": 12.23717271
     },
     {
       "time": 11.50195397,
       "measured": 8.046690954,
-      "predicted": 7.286170959
+      "predicted": 7.286170959,
+      "current": 12.18778077
     },
     {
       "time": 11.59990203,
       "measured": 8.039060446,
-      "predicted": 6.771846294
+      "predicted": 6.771846294,
+      "current": 8.737458635
     },
     {
       "time": 11.70172173,
       "measured": 7.792916983,
-      "predicted": 6.920968533
+      "predicted": 6.920968533,
+      "current": 3.759708844
     },
     {
       "time": 11.8006215,
       "measured": 6.7846995,
-      "predicted": 6.993739605
+      "predicted": 6.993739605,
+      "current": 3.584083234
     },
     {
       "time": 11.90041118,
       "measured": 5.430741656,
-      "predicted": 6.324241161
+      "predicted": 6.324241161,
+      "current": 2.181216598
     },
     {
       "time": 11.99931138,
       "measured": 3.434429563,
-      "predicted": 4.487024307
+      "predicted": 4.487024307,
+      "current": 0.931926486
     },
     {
       "time": 12.10189672,
       "measured": 0.931432513,
-      "predicted": 1.182549834
+      "predicted": 1.182549834,
+      "current": 0.426776499
     },
     {
       "time": 12.19993767,
       "measured": 0.201898419,
-      "predicted": 0.543717623
+      "predicted": 0.543717623,
+      "current": 0.291275923
     },
     {
       "time": 12.30233696,
       "measured": 0.0,
-      "predicted": 0.79535991
+      "predicted": 0.79535991,
+      "current": -0.102685577
     },
     {
       "time": 12.4002563,
       "measured": 0.0,
-      "predicted": 1.465216994
+      "predicted": 1.465216994,
+      "current": -0.466167769
     },
     {
       "time": 12.50020946,
       "measured": 0.0,
-      "predicted": 0.601156831
+      "predicted": 0.601156831,
+      "current": -0.466167769
     },
     {
       "time": 12.6001792,
       "measured": 0.0,
-      "predicted": 0.787236571
+      "predicted": 0.787236571,
+      "current": -0.466167769
     },
     {
       "time": 12.70130918,
       "measured": 0.0,
-      "predicted": 0.745561719
+      "predicted": 0.745561719,
+      "current": -0.460411022
     },
     {
       "time": 12.79946919,
       "measured": 0.0,
-      "predicted": 1.00796175
+      "predicted": 1.00796175,
+      "current": -0.348124476
     }
   ]
 }
