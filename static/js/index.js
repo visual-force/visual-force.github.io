@@ -8,7 +8,7 @@
   const videos = [document.querySelector('#baseline-video'), document.querySelector('#ours-video')];
   const status = document.querySelector('#playback-status');
   let requestId = 0;
-  let currentTask = 'berry';
+  let currentTask = 'plug';
   const setText = (id, value) => { document.getElementById(id).textContent = value; };
   function pause() {
     requestId += 1;
