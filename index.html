@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="VisualForce learns force from visible gripper deformation and uses predicted force to select robot actions, without dedicated force or tactile sensors at deployment.">
+  <meta name="theme-color" content="#fcfdf9">
+  <meta property="og:title" content="VisualForce · Robot Learning with Visual Predicted Force">
+  <meta property="og:description" content="Force-aware action selection from visible gripper deformation. Watch four real-world manipulation tasks and explore recorded force estimates.">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary">
+  <title>VisualForce · Robot Learning with Visual Predicted Force</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Sans+3:ital,wght@0,200..900;1,200..900&amp;display=swap">
+  <link rel="stylesheet" href="static/css/index.css">
+  <link rel="stylesheet" href="static/css/gripper-demo.css">
+  <link rel="stylesheet" href="static/css/deformation-demo.css">
+  <script defer src="static/js/deformation-demo.js"></script>
+  <script defer src="static/js/gripper-demo.js"></script>
+  <script defer src="static/js/index.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <main id="main">
+    <header class="hero container" id="overview">
+      <h1><span>VisualForce:</span> Robot Learning<br>with Visual Predicted Force</h1>
+      <p class="authors"><span><a href="https://haonan16.github.io/">Haonan Chen</a><sup>*</sup></span> <span><a href="https://raventhatfly.github.io/">Feiyang Wu</a><sup>*</sup></span> <span><a href="https://yuxiang-ma.github.io/">Yuxiang Ma</a></span> <span><a href="https://mustafa-mete.com/">Mustafa Mete</a></span> <span><a href="https://maal.hkust.edu.hk/authors/pengfei-ye/">Pengfei Ye</a></span> <span><a href="https://junxuans.github.io/">Junxuan Shen</a></span> <span><a href="https://openreview.net/profile?id=~Cheng_Zhu8">Cheng Zhu</a></span> <span><a href="https://ch.linkedin.com/in/aurora-ruggeri-3b417624a">Aurora Ruggeri</a></span> <span><a href="https://www.linkedin.com/in/kelvin-cheung-8524591b1">Kelvin Cheung</a></span> <span><a href="https://jiayuanm.com/">Jiayuan Mao</a></span> <span><a href="https://bcs.mit.edu/directory/edward-h-adelson">Edward Adelson</a></span> <span><a href="https://jiajunwu.com/">Jiajun Wu</a></span> <span><a href="https://people.seas.harvard.edu/~howe/">Robert D. Howe</a></span> <span><a href="https://yilundu.github.io/">Yilun Du</a></span></p>
+      <p class="affiliations"><span>Harvard University</span><span>MIT</span><span>University of Pennsylvania</span><span>Stanford University</span></p>
+      <p class="equal-contribution">* Equal contribution</p>
+      <div class="hero-links"><a class="button" href="static/papers/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/visual-force/visual-force">Code <span aria-hidden="true">↗</span></a><a class="button secondary" href="#teaser">Watch overview · 2:30 <span aria-hidden="true">↓</span></a></div>
+      <nav class="section-links" aria-label="Page sections"><a href="#gripper-demo">Squeezing demo</a><a href="#video">Experiments</a><a href="#recorded-force">Force estimates</a><a href="#citation">Citation</a></nav>
+    </header>
+    <section class="container hero-demo" id="teaser" aria-label="VisualForce overview">
+      <figure class="teaser-video"><video controls playsinline preload="none" poster="static/images/tasks/teaser.jpg" aria-label="VisualForce overview video"><source src="static/videos/web/teaser.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/web/teaser.mp4">Download the overview video</a>.</video><figcaption><span>Overview · 2:30</span></figcaption></figure>
+    </section>
+    <div class="container section demo-section">
+    <section class="experiment gripper-demo" id="gripper-demo" aria-labelledby="gripper-title">
+      <div class="section-heading"><h2 id="gripper-title">See force through deformation</h2><span class="badge">Interactive illustration</span></div>
+      <p>Increase the gripping force and watch the compliant fingers bend around an object. The dashed outline shows their unloaded shape.</p>
+      <div class="gripper-panels">
+        <figure class="gripper-panel"><figcaption>Fin Ray gripper <span>Compliant fingers under load</span></figcaption>
+          <svg data-gripper-scene viewBox="0 0 460 350" role="img" aria-labelledby="gripper-scene-title gripper-scene-desc"><title id="gripper-scene-title">Compliant fingers under load</title><desc id="gripper-scene-desc">Two tapered green outline fingers, each with four diagonal ribs, bend around an object as the illustrative force increases. Dashed outlines show the unloaded fingers.</desc></svg>
+          <div class="legend"><span><i class="gripper-line unloaded"></i>Unloaded outline</span><span><i class="gripper-line"></i>Loaded shape</span></div>
+        </figure>
+      </div>
+      <div class="target-control"><label for="gripper-force">Illustrative gripping force <output id="gripper-force-value" for="gripper-force">0.0 N</output></label><input id="gripper-force" type="range" min="0" max="10" step="0.1" value="0" aria-describedby="gripper-model-note"><div class="range-labels"><span>0 N · unloaded</span><span>10 N · more deformation</span></div></div>
+      <div class="gripper-presets" role="group" aria-label="Explore illustrative force levels"><button type="button" data-gripper-force="0" aria-pressed="true">Unloaded</button><button type="button" data-gripper-force="3" aria-pressed="false">Light contact</button><button type="button" data-gripper-force="7" aria-pressed="false">Firm contact</button><button type="button" data-gripper-force="10" aria-pressed="false">Maximum shown</button></div>
+      <p class="gripper-caption">Watch the fingers’ outline and internal ribs change as the load increases.</p>
+      <p class="note" id="gripper-model-note">Illustrative loads, not calibrated measurements. <a href="#recorded-force">Explore recorded force estimates ↓</a></p>
+      <noscript><p>Enable JavaScript to explore the illustration. Compliant gripper deformation provides the visual cue used to estimate gripping force.</p></noscript>
+    </section>
+    </div>
+    <section class="section experiments-section" id="video" aria-labelledby="video-title">
+      <div class="container">
+        <div class="section-intro"><h2 id="video-title">Experiments</h2><p>Both methods use the same trained policy. The baseline executes one sampled action; VisualForce samples 32 action–force pairs and chooses the action whose predicted force is closest to a target from demonstrations.</p><p class="note">Success rates: 15 trials per task and method. <a href="static/papers/paper.pdf#page=5">Full results in the paper ↗</a>. Videos are sped up; clip lengths do not indicate task completion times.</p></div>
+        <section class="task-comparison" data-comparison aria-labelledby="plug-title">
+          <div class="task-heading"><div><h3 id="plug-title">Plug insertion</h3><p>Maintain enough grip to insert the plug without slipping.</p></div></div>
+          <div class="video-grid">
+            <figure class="video-card"><figcaption><span id="plug-baseline-label">Baseline</span><strong>26.7% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/plug-baseline.jpg" aria-labelledby="plug-baseline-label"><source src="static/videos/web/plug-baseline.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The plug slips within the gripper.</p><a href="static/videos/web/plug-baseline.mp4" download aria-label="Download plug insertion Baseline video">↓</a></div></figure>
+            <figure class="video-card ours-card"><figcaption><span id="plug-ours-label">VisualForce</span><strong>73.3% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/plug-ours.jpg" aria-labelledby="plug-ours-label"><source src="static/videos/web/plug-ours.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The robot maintains its grip during insertion.</p><a href="static/videos/web/plug-ours.mp4" download aria-label="Download plug insertion VisualForce video">↓</a></div></figure>
+          </div>
+          <div class="playback-row"><div class="playback-controls" role="group" aria-label="Control plug insertion videos"><button data-play type="button">Play both</button><button data-pause type="button">Pause</button><button data-replay type="button">Replay</button></div></div>
+          <p class="playback-status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="task-comparison" data-comparison aria-labelledby="berry-title">
+          <div class="task-heading"><div><h3 id="berry-title">Berry picking</h3><p>Hold the berry securely without crushing it.</p></div></div>
+          <div class="video-grid">
+            <figure class="video-card"><figcaption><span id="berry-baseline-label">Baseline</span><strong>0.0% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/berry-baseline.jpg" aria-labelledby="berry-baseline-label"><source src="static/videos/web/berry-baseline.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>Excessive grip crushes the berry.</p><a href="static/videos/web/berry-baseline.mp4" download aria-label="Download berry picking Baseline video">↓</a></div></figure>
+            <figure class="video-card ours-card"><figcaption><span id="berry-ours-label">VisualForce</span><strong>73.3% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/berry-ours.jpg" aria-labelledby="berry-ours-label"><source src="static/videos/web/berry-ours.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The berry stays intact during transfer.</p><a href="static/videos/web/berry-ours.mp4" download aria-label="Download berry picking VisualForce video">↓</a></div></figure>
+          </div>
+          <div class="playback-row"><div class="playback-controls" role="group" aria-label="Control berry picking videos"><button data-play type="button">Play both</button><button data-pause type="button">Pause</button><button data-replay type="button">Replay</button></div></div>
+          <p class="playback-status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="task-comparison" data-comparison aria-labelledby="can-title">
+          <div class="task-heading"><div><h3 id="can-title">Empty-can grasping</h3><p>Lift a thin-walled can without denting it.</p></div></div>
+          <div class="video-grid">
+            <figure class="video-card"><figcaption><span id="can-baseline-label">Baseline</span><strong>46.7% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/can-baseline.jpg" aria-labelledby="can-baseline-label"><source src="static/videos/web/can-baseline.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>Excessive force dents the can.</p><a href="static/videos/web/can-baseline.mp4" download aria-label="Download empty-can grasping Baseline video">↓</a></div></figure>
+            <figure class="video-card ours-card"><figcaption><span id="can-ours-label">VisualForce</span><strong>86.7% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/can-ours.jpg" aria-labelledby="can-ours-label"><source src="static/videos/web/can-ours.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The can is transferred without damage.</p><a href="static/videos/web/can-ours.mp4" download aria-label="Download empty-can grasping VisualForce video">↓</a></div></figure>
+          </div>
+          <div class="playback-row"><div class="playback-controls" role="group" aria-label="Control empty-can grasping videos"><button data-play type="button">Play both</button><button data-pause type="button">Pause</button><button data-replay type="button">Replay</button></div></div>
+          <p class="playback-status" role="status" aria-live="polite"></p>
+        </section>
+        <section class="task-comparison" data-comparison aria-labelledby="reorientation-title">
+          <div class="task-heading"><div><h3 id="reorientation-title">In-hand reorientation</h3><p>Allow the plate to pivot while maintaining contact with the table.</p></div></div>
+          <div class="video-grid">
+            <figure class="video-card"><figcaption><span id="reorientation-baseline-label">Baseline</span><strong>6.7% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/reorientation-baseline.jpg" aria-labelledby="reorientation-baseline-label"><source src="static/videos/web/reorientation-baseline.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The plate does not reorient upright.</p><a href="static/videos/web/reorientation-baseline.mp4" download aria-label="Download in-hand reorientation Baseline video">↓</a></div></figure>
+            <figure class="video-card ours-card"><figcaption><span id="reorientation-ours-label">VisualForce</span><strong>46.7% success</strong></figcaption><video controls muted playsinline preload="none" poster="static/images/tasks/reorientation-ours.jpg" aria-labelledby="reorientation-ours-label"><source src="static/videos/web/reorientation-ours.mp4" type="video/mp4">Your browser does not support embedded video.</video><div class="video-footer"><p>The plate pivots upright.</p><a href="static/videos/web/reorientation-ours.mp4" download aria-label="Download in-hand reorientation VisualForce video">↓</a></div></figure>
+          </div>
+          <div class="playback-row"><div class="playback-controls" role="group" aria-label="Control in-hand reorientation videos"><button data-play type="button">Play both</button><button data-pause type="button">Pause</button><button data-replay type="button">Replay</button></div></div>
+          <p class="playback-status" role="status" aria-live="polite"></p>
+        </section>
+      </div>
+    </section>
+    <div class="container section results-section">
+    <section class="deformation-viewer recorded-force-result" id="recorded-force" aria-labelledby="deformation-title" data-force-source="static/data/force-trajectory.json">
+      <h2 id="deformation-title">Recorded force estimates</h2>
+      <p>Drag the time slider to inspect the reference measurement and visual force estimate at each recorded sample.</p>
+      <div class="legend"><span><i class="dot measured-dot"></i>Measured force</span><span><i class="dot predicted-dot"></i>Visually predicted force</span><span><i class="dot current-dot"></i>Motor-current estimate</span></div>
+      <svg id="deformation-plot" viewBox="0 0 900 300" role="img" aria-labelledby="deformation-plot-title deformation-plot-description"><title id="deformation-plot-title">Recorded force over time</title><desc id="deformation-plot-description">Measured force, visually predicted force, and motor-current force estimates from the paper. A cursor follows the selected timestamp, with exact values shown below.</desc></svg>
+      <div class="target-control"><label for="deformation-time">Recording time <output id="deformation-time-value" for="deformation-time">—</output></label><input id="deformation-time" type="range" min="0" max="0" step="1" value="0" disabled><div class="range-labels"><span>0 s</span><span id="deformation-duration">—</span></div></div>
+      <div class="readouts force-recording-readouts" aria-live="polite" aria-atomic="true"><div class="readout"><span>Measured force</span><strong id="deformation-measured">—</strong><small>Reference force measurement</small></div><div class="readout predicted-readout"><span>Visually predicted force</span><strong id="deformation-predicted">—</strong><small>Estimate from gripper deformation</small></div><div class="readout current-readout"><span>Motor-current estimate</span><strong id="deformation-current">—</strong><small>Linear motor-current baseline</small></div></div>
+      <p class="note data-note">One recorded sequence from <a href="static/papers/paper.pdf#page=5">Figure 4(b)</a>. <a href="static/data/force-trajectory.json" download>Download the data</a>.</p>
+      <p id="deformation-status" class="note" role="status">Loading the recorded force samples…</p>
+      <noscript><p>Enable JavaScript to explore the force recording, or view Figure 4 in the paper.</p></noscript>
+    </section>
+    </div>
+    <section class="paper-section section" aria-labelledby="paper-details-title">
+      <div class="container reading-width"><h2 id="paper-details-title">Citation</h2>
+      <div id="citation"><div class="citation-card"><button class="copy-button secondary" type="button" data-copy-target="#citation-code">Copy BibTeX</button><pre><code id="citation-code">@misc{chen2026visualforce,
+  title = {Robot Learning with Visual Predicted Force},
+  author = {Chen, Haonan and Wu, Feiyang and Ma, Yuxiang and
+            Mete, Mustafa and Ye, Pengfei and Shen, Junxuan and
+            Zhu, Cheng and Ruggeri, Aurora and Cheung, Kelvin and
+            Mao, Jiayuan and Adelson, Edward and Wu, Jiajun and
+            Howe, Robert D. and Du, Yilun},
+  year = {2026},
+  note = {Manuscript}
+}</code></pre></div><p class="note">Manuscript citation; publication details will be updated when available.</p></div>
+      </div>
+    </section>
+  </main>
+  <footer class="container site-footer"><a class="wordmark" href="#overview">VisualForce<span aria-hidden="true">.</span></a><a href="static/papers/paper.pdf">Read the paper ↗</a></footer>
+</body>
+</html>

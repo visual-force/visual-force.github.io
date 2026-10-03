@@ -1,0 +1,8 @@
+/* Page layout only. Typography, colors, controls, plots, and tables use index.css. */
+.demo-navigation { display:flex; justify-content:space-between; gap:20px; padding-block:22px; border-bottom:1px solid var(--line); font-size:14px; }
+.demo-navigation a { text-decoration:none; }
+.standalone-demo .lead { max-width:760px; margin:0 auto 16px; }
+.standalone-demo .paper-title { color:var(--muted); font-size:14px; }
+.standalone-demo .experiment { border-top:1px solid var(--line); }
+
+.standalone-demo .reading-width { margin-inline:auto; }
