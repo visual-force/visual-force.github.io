@@ -2,3 +2,6 @@
 
 # Full-resolution teaser source; browser copy is tracked.
 /static/videos/teaser/visual_force_teaser.mp4
+
+# Local recording source; the site uses the exported JSON and video.
+/data.pkl

@@ -32,7 +32,7 @@ All four comparisons are visible without a task picker. Each pair starts muted o
 - `static/videos/web/`: browser copies with fast-start metadata. Task and overview videos use H.264/AAC at 1280×720; the silent wrist-camera clip retains its original 640×480 resolution.
 - `static/videos/berry/`, `can/`, `plug/`, `teaser/`: preserved source recordings.
 - `static/videos/reorientation/`: preserved source recordings for plate reorientation.
-- `wrist_image.mp4` and `data.pkl`: supplied wrist-camera recording and matching observation timestamps. The 188 video frames correspond to 188 observations. The paper’s 129 plotted samples match observation indices 58–186 by their relative timestamps (maximum discrepancy below 5 nanoseconds). `static/videos/web/wrist-image.mp4` contains exactly those frames at the original 10 fps; `static/images/tasks/wrist-image.jpg` is its first frame. Each force sample’s `videoTime` identifies its frame in the trimmed clip, while `time` preserves the original acquisition timing. No force values or video speeds are changed.
+- `wrist_image.mp4` and local-only `data.pkl`: supplied wrist-camera recording and matching observation timestamps. `data.pkl` is excluded from Git; the site uses the exported JSON and video. The 188 video frames correspond to 188 observations. The paper’s 129 plotted samples match observation indices 58–186 by their relative timestamps (maximum discrepancy below 5 nanoseconds). `static/videos/web/wrist-image.mp4` contains exactly those frames at the original 10 fps; `static/images/tasks/wrist-image.jpg` is its first frame. Each force sample’s `videoTime` identifies its frame in the trimmed clip, while `time` preserves the original acquisition timing. No force values or video speeds are changed.
 
 Regenerate browser videos and posters after replacing source recordings (requires `ffmpeg`):
 
@@ -42,7 +42,7 @@ python3 scripts/prepare-media.py
 
 This rewrites generated browser assets while preserving source recordings and their encoded playback speeds. Source files are mapped at the top of the script. The webpage applies no additional speed changes.
 
-Regenerate the synchronized wrist-camera clip, poster, and frame mapping separately (requires `ffmpeg`, `ffprobe`, and Python packages `joblib` and `numpy`):
+Regenerate the synchronized wrist-camera clip, poster, and frame mapping separately (requires a local copy of `data.pkl` in the repository root, `ffmpeg`, `ffprobe`, and Python packages `joblib` and `numpy`):
 
 ```bash
 python3 scripts/prepare-force-recording.py
@@ -50,4 +50,4 @@ python3 scripts/prepare-force-recording.py
 
 The script matches the full sequence of force timestamps against `data.pkl` and checks that the source video has one frame per observation before exporting the matching segment. It preserves both source files and all three force traces.
 
-Citation uses a manuscript entry because no publication venue or arXiv identifier is established by the supplied PDF.
+The citation uses the arXiv BibTeX entry for [arXiv:2610.04741](https://arxiv.org/abs/2610.04741).
