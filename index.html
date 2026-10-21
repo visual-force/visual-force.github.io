@@ -24,15 +24,34 @@
   <a class="skip-link" href="#main">Skip to content</a>
   <main id="main">
     <header class="hero container" id="overview">
-      <h1><span>VisualForce:</span> Robot Learning<br>with Visual Predicted Force</h1>
+      <h1><span>VisualForce:</span> Robot Learning<br> with Visual Predicted Force</h1>
       <p class="authors"><span><a href="https://haonan16.github.io/">Haonan Chen</a><sup>*</sup></span> <span><a href="https://raventhatfly.github.io/">Feiyang Wu</a><sup>*</sup></span> <span><a href="https://yuxiang-ma.github.io/">Yuxiang Ma</a></span> <span><a href="https://mustafa-mete.com/">Mustafa Mete</a></span> <span><a href="https://maal.hkust.edu.hk/authors/pengfei-ye/">Pengfei Ye</a></span> <span><a href="https://junxuans.github.io/">Junxuan Shen</a></span> <span><a href="https://openreview.net/profile?id=~Cheng_Zhu8">Cheng Zhu</a></span> <span><a href="https://ch.linkedin.com/in/aurora-ruggeri-3b417624a">Aurora Ruggeri</a></span> <span><a href="https://www.linkedin.com/in/kelvin-cheung-8524591b1">Kelvin Cheung</a></span> <span><a href="https://jiayuanm.com/">Jiayuan Mao</a></span> <span><a href="https://bcs.mit.edu/directory/edward-h-adelson">Edward Adelson</a></span> <span><a href="https://jiajunwu.com/">Jiajun Wu</a></span> <span><a href="https://people.seas.harvard.edu/~howe/">Robert D. Howe</a></span> <span><a href="https://yilundu.github.io/">Yilun Du</a></span></p>
-      <p class="affiliations"><span>Harvard University</span><span>MIT</span><span>University of Pennsylvania</span><span>Stanford University</span></p>
+      <div class="affiliations" role="group" aria-label="University affiliations">
+        <a href="https://www.harvard.edu/" title="Harvard University"><img class="affiliation-harvard" src="static/images/affiliations/harvard.png" alt="Harvard University" width="72" height="72"></a>
+        <a href="https://www.mit.edu/" title="Massachusetts Institute of Technology"><img class="affiliation-mit" src="static/images/affiliations/mit.svg" alt="Massachusetts Institute of Technology (MIT)" width="84" height="45"></a>
+        <a href="https://www.upenn.edu/" title="University of Pennsylvania"><img class="affiliation-penn" src="static/images/affiliations/penn.svg" alt="University of Pennsylvania" width="49" height="56"></a>
+        <a href="https://www.stanford.edu/" title="Stanford University"><img class="affiliation-stanford" src="static/images/affiliations/stanford.png" alt="Stanford University" width="84" height="84"></a>
+      </div>
       <p class="equal-contribution">* Equal contribution</p>
-      <div class="hero-links"><a class="button" href="static/papers/paper.pdf">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/visual-force/visual-force">Code <span aria-hidden="true">↗</span></a><a class="button secondary" href="#teaser">Watch overview · 2:30 <span aria-hidden="true">↓</span></a></div>
-      <nav class="section-links" aria-label="Page sections"><a href="#gripper-demo">Squeezing demo</a><a href="#video">Experiments</a><a href="#recorded-force">Force estimates</a><a href="#citation">Citation</a></nav>
+      <div class="hero-links"><a class="button" href="https://arxiv.org/abs/2610.04741">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/visual-force/visual-force">Code <span aria-hidden="true">↗</span></a><a class="button secondary" href="#teaser">Watch overview · 2:30 <span aria-hidden="true">↓</span></a></div>
+      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#gripper-demo">Squeezing demo</a><a href="#video">Experiments</a><a href="#recorded-force">Force estimates</a><a href="#citation">Citation</a></nav>
     </header>
     <section class="container hero-demo" id="teaser" aria-label="VisualForce overview">
       <figure class="teaser-video"><video controls playsinline preload="none" poster="static/images/tasks/teaser.jpg" aria-label="VisualForce narrated overview video"><source src="static/videos/web/teaser.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/web/teaser.mp4">Download the overview video</a>.</video><figcaption><span>Overview · 2:30</span><span>Includes narration · Turn on sound</span></figcaption></figure>
+      <p class="teaser-summary">VisualForce learns <strong>force-aware manipulation from gripper deformation</strong>, using predicted force to choose actions without force or tactile sensors at deployment.</p>
+    </section>
+    <section class="container section abstract-section" id="abstract" aria-labelledby="abstract-title">
+      <h2 id="abstract-title">Abstract</h2>
+      <p>Force-aware manipulation typically relies on specialized force or tactile sensors. We show that force-aware manipulation can instead be achieved through visual force prediction from the deformation of a compliant Fin Ray gripper. Our approach trains two models. First, we train a visual force estimator on calibration data and use it to annotate task demonstrations with force estimates. Second, we train an action–force proposal policy on these force-augmented demonstrations to jointly generate candidate robot actions and their associated forces. At test time, we sample candidate actions and the forces they are expected to produce, then execute the action whose predicted force is closest to a target from the demonstrations. We evaluate our approach on berry picking, empty-can grasping, in-hand reorientation, and plug insertion. Our results show that visual force prediction can guide inference-time action selection for contact-rich manipulation without requiring force or tactile sensors at deployment.</p>
+    </section>
+    <section class="section method-section" id="method" aria-labelledby="method-title">
+      <div class="container">
+        <h2 id="method-title">How VisualForce works</h2>
+        <figure class="method-figure">
+          <a href="static/images/paper/method.pdf" aria-label="Open the full-size VisualForce method diagram"><img src="static/images/paper/method.svg" width="1466" height="388" loading="lazy" alt="VisualForce method: a visual force estimator learns from gripper deformation; an action–force policy proposes candidate actions and forces, and the action whose predicted force is closest to the target is selected."></a>
+          <figcaption>Visual force estimation and force-guided action selection. <a href="static/images/paper/method.pdf">View the full-size diagram ↗</a></figcaption>
+        </figure>
+      </div>
     </section>
     <div class="container section demo-section">
     <section class="experiment gripper-demo" id="gripper-demo" aria-labelledby="gripper-title">
@@ -127,6 +146,6 @@
       </div>
     </section>
   </main>
-  <footer class="container site-footer"><a class="wordmark" href="#overview">VisualForce<span aria-hidden="true">.</span></a><a href="static/papers/paper.pdf">Read the paper ↗</a></footer>
+  <footer class="container site-footer"><a class="wordmark" href="#overview">VisualForce<span aria-hidden="true">.</span></a><a href="https://arxiv.org/abs/2610.04741">Read the paper ↗</a></footer>
 </body>
 </html>
