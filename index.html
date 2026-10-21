@@ -34,7 +34,7 @@
       </div>
       <p class="equal-contribution">* Equal contribution</p>
       <div class="hero-links"><a class="button" href="https://arxiv.org/abs/2610.04741">Read the paper <span aria-hidden="true">↗</span></a><a class="button secondary" href="https://github.com/visual-force/visual-force">Code <span aria-hidden="true">↗</span></a><a class="button secondary" href="#teaser">Watch overview · 2:30 <span aria-hidden="true">↓</span></a></div>
-      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#method">Method</a><a href="#gripper-demo">Squeezing demo</a><a href="#video">Experiments</a><a href="#recorded-force">Force estimates</a><a href="#citation">Citation</a></nav>
+      <nav class="section-links" aria-label="Page sections"><a href="#abstract">Abstract</a><a href="#gripper-demo">Squeezing demo</a><a href="#video">Experiments</a><a href="#recorded-force">Force estimates</a><a href="#citation">Citation</a></nav>
     </header>
     <section class="container hero-demo" id="teaser" aria-label="VisualForce overview">
       <figure class="teaser-video"><video controls playsinline preload="none" poster="static/images/tasks/teaser.jpg" aria-label="VisualForce narrated overview video"><source src="static/videos/web/teaser.mp4" type="video/mp4">Your browser does not support embedded video. <a href="static/videos/web/teaser.mp4">Download the overview video</a>.</video><figcaption><span>Overview · 2:30</span><span>Includes narration · Turn on sound</span></figcaption></figure>
@@ -43,15 +43,6 @@
     <section class="container section abstract-section" id="abstract" aria-labelledby="abstract-title">
       <h2 id="abstract-title">Abstract</h2>
       <p>Force-aware manipulation typically relies on specialized force or tactile sensors. We show that force-aware manipulation can instead be achieved through visual force prediction from the deformation of a compliant Fin Ray gripper. Our approach trains two models. First, we train a visual force estimator on calibration data and use it to annotate task demonstrations with force estimates. Second, we train an action–force proposal policy on these force-augmented demonstrations to jointly generate candidate robot actions and their associated forces. At test time, we sample candidate actions and the forces they are expected to produce, then execute the action whose predicted force is closest to a target from the demonstrations. We evaluate our approach on berry picking, empty-can grasping, in-hand reorientation, and plug insertion. Our results show that visual force prediction can guide inference-time action selection for contact-rich manipulation without requiring force or tactile sensors at deployment.</p>
-    </section>
-    <section class="section method-section" id="method" aria-labelledby="method-title">
-      <div class="container">
-        <h2 id="method-title">How VisualForce works</h2>
-        <figure class="method-figure">
-          <a href="static/images/paper/method.pdf" aria-label="Open the full-size VisualForce method diagram"><img src="static/images/paper/method.svg" width="1466" height="388" loading="lazy" alt="VisualForce method: a visual force estimator learns from gripper deformation; an action–force policy proposes candidate actions and forces, and the action whose predicted force is closest to the target is selected."></a>
-          <figcaption>Visual force estimation and force-guided action selection. <a href="static/images/paper/method.pdf">View the full-size diagram ↗</a></figcaption>
-        </figure>
-      </div>
     </section>
     <div class="container section demo-section">
     <section class="experiment gripper-demo" id="gripper-demo" aria-labelledby="gripper-title">

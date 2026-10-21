@@ -1,6 +1,6 @@
 # VisualForce
 
-Project page for **Robot Learning with Visual Predicted Force**. The page opens with the complete narrated overview and a one-sentence takeaway, followed by the paper abstract, the method diagram, the interactive squeezing illustration, four task video comparisons, and a recorded-force explorer. Design inspiration: [B-spline Policy](https://b-spline-policy.github.io/) and [PointWorld](https://point-world.github.io/).
+Project page for **Robot Learning with Visual Predicted Force**. The page opens with the complete narrated overview and a one-sentence takeaway, followed by the paper abstract, the interactive squeezing illustration, four task video comparisons, and a recorded-force explorer. Design inspiration: [B-spline Policy](https://b-spline-policy.github.io/) and [PointWorld](https://point-world.github.io/).
 
 ## Local preview
 
@@ -14,7 +14,7 @@ Open <http://localhost:8000>. The site is static HTML/CSS/JavaScript; no build s
 
 ## Content and interactions
 
-- `index.html`: title, authors, teaser and takeaway, paper abstract, method diagram (Figure 2), squeezing illustration, four video comparisons with success rates, recorded force explorer, and arXiv citation.
+- `index.html`: title, authors, teaser and takeaway, paper abstract, squeezing illustration, four video comparisons with success rates, recorded force explorer, and arXiv citation.
 - `static/js/index.js`: paired playback controls and viewport playback. Task descriptions and success rates live in `index.html`.
 - `static/css/index.css`: shared academic styles for both pages. `force-demo.css` contains standalone page layout only.
 - `gripper-demo.html`, `static/js/gripper-demo.js`, and `static/css/gripper-demo.css`: gripper bending illustration, also embedded between the teaser and task comparisons on the main page. The force slider and presets bend green outline fingers with four diagonal ribs, interpolating the exact vector shapes from slides 13–15 of `visualforce_teaser_video.pptx` (slides 16–17 reverse the sequence). The object position and size also match the slides. Loads and geometry are illustrative, not calibrated.
@@ -26,7 +26,7 @@ All four comparisons are visible without a task picker. Each pair starts muted o
 ## Assets
 
 - `static/papers/paper.pdf`: supplied manuscript, the source for paper content and results.
-- `static/images/paper/method.svg`: Figure 2 exported from the original `visual_force_paper/figures/method.pdf`, preserving vector text and diagrams. The adjacent PDF is the full-size source linked from the image.
+- `static/images/paper/method.svg`: Figure 2 exported from the original `visual_force_paper/figures/method.pdf`, preserving vector text and diagrams. The adjacent PDF preserves the full-size source.
 - `static/images/tasks/`: video poster frames.
 - `static/images/affiliations/`: local university marks linked from the author header. Sources: [Harvard](https://www.harvard.edu/wp-content/uploads/2020/10/cropped-logo-branding-compressed.png?w=192), [MIT](https://www.mit.edu/) (the monogram from the homepage SVG), [Penn](https://branding.web-resources.upenn.edu/themes/custom/penn_starter/assets/img/UPenn-logo.svg) (the shield group), and [Stanford](https://identity.stanford.edu/wp-content/uploads/sites/3/2020/07/block-s-right.png).
 - `static/videos/teaser/visual_force_teaser.mp4`: final complete overview source; preserved unchanged locally and excluded from Git because of its size. Restore this source before regenerating teaser assets on another checkout. Its browser copy is `static/videos/web/teaser.mp4`, with a closing-montage poster. The overview plays on request with sound and native controls, without looping.
